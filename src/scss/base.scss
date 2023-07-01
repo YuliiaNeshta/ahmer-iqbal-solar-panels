@@ -126,6 +126,11 @@
       height: 2.125rem;
     }
   }
+  &--small {
+    font-size: 1.125rem;
+    height: 3.375rem;
+    min-width: 14.5rem;
+  }
   &--fill {
     background-color: $accent;
     &:hover {
@@ -201,4 +206,50 @@
 
 .accent {
   color: $accent;
+}
+
+.header {
+  background-color: $black;
+  padding-block: 0.5rem;
+  transform: translateY(-100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  &.fixed-header {
+    pointer-events: initial;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+  @media screen and (max-width: $tablet) {
+    display: none;
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.yellow-blur {
+  border-radius: 17.21875rem;
+  opacity: 0.6;
+  background: $accent;
+  filter: blur(250px);
+  width: 34.375rem;
+  height: 34.375rem;
+  position: absolute;
+  &--left {
+    left: -20%;
+    bottom: -50%;
+  }
+  &--right {
+    right: -9%;
+    top: -47%;
+  }
 }

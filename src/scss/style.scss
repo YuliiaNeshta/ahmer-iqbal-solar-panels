@@ -65,6 +65,24 @@ select {
   @media screen and (max-width: $desktop) {
     font-size: 1.25rem;
   }
+  @media screen and (max-width: $tablet) {
+    width: 100%;
+    color: rgba(21, 21, 19, 0.55);
+    text-align: center;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: -0.015rem;
+    transform: none;
+    margin: 0;
+    padding-block: 0.81rem;
+    height: 2.5rem;
+    margin-bottom: 1.88rem;
+  }
+  @media screen and (max-width: $mobile) {
+    font-size: 0.75rem;
+  }
   &__text {
     display: block;
     transform: skewX(10deg);
@@ -73,12 +91,17 @@ select {
     font-size: 1.5rem;
     font-family: "Wadik", sans-serif;
     font-weight: 700;
+    @media screen and (max-width: $tablet) {
+      transform: none;
+    }
   }
 }
 
 .hero {
   background: $black;
   padding-block-start: 1.88rem;
+  position: relative;
+  overflow: hidden;
   &__logo {
     position: absolute;
     top: 4.28rem;
@@ -114,6 +137,7 @@ select {
     align-items: center;
     @media screen and (max-width: $tablet) {
       flex-direction: column;
+      gap: 1.88rem;
     }
   }
 }
@@ -126,7 +150,7 @@ select {
     @media screen and (max-width: $desktop) {
       gap: 7rem;
     }
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: $large-tablet) {
       gap: 3.75rem;
       flex-direction: column;
       flex-wrap: wrap;
@@ -142,7 +166,7 @@ select {
       width: 19.6875rem;
       max-height: 31.25rem;
     }
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: $large-tablet) {
       width: 18.75rem;
       height: 31.25rem;
       margin: 0 auto;
@@ -164,9 +188,9 @@ select {
     display: flex;
     gap: 10.31rem;
     @media screen and (max-width: $desktop) {
-      gap: 7.81rem;
+      gap: 5rem;
     }
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: $large-tablet) {
       flex-direction: column-reverse;
       gap: 2.81rem;
     }
@@ -179,7 +203,7 @@ select {
     @media screen and (max-width: $desktop) {
       max-width: 31.5625rem;
     }
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: $large-tablet) {
       width: 100%;
       height: 20rem;
       max-width: none;
@@ -282,7 +306,7 @@ select {
   &__text {
     max-width: 35.8125rem;
     position: sticky;
-    top: 2rem;
+    top: 7rem;
     height: max-content;
     @media screen and (max-width: $desktop) {
       font-size: 1.25rem;
@@ -426,7 +450,11 @@ select {
 .socials {
   padding: 0;
   display: flex;
+  margin: 0;
   gap: 3.125rem;
+  @media screen and (max-width: $mobile) {
+    gap: 1.25rem;
+  }
   &.footer__socials {
     gap: 2.5rem;
     margin: 0;
@@ -435,32 +463,55 @@ select {
     height: 3rem;
     width: 3rem;
     display: inline-block;
-    &:hover {
-      & svg path {
-        fill: $white;
-        stroke: $white;
+    color: $accent;
+    &--circle-mobile {
+      & svg {
+        @media screen and (max-width: $mobile) {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
       }
+      @media screen and (max-width: $mobile) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.125rem;
+        height: 3.125rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+      }
+    }
+    &:hover {
+      color: $white;
     }
     & svg path {
       transition: all 0.3s ease;
     }
   }
+  &--small {
+    gap: 2rem;
+    & .socials__link {
+      height: 1.625rem;
+      width: auto;
+    }
+  }
+  &__link--yellow {
+    color: $white;
+    &:hover {
+      color: $accent;
+    }
+  }
   &__link--black {
     width: 1.875rem;
     height: 1.875rem;
+    color: $accent;
     & svg {
       width: 1.875rem;
       height: 1.875rem;
       flex-shrink: 0;
     }
     &:hover {
-      & svg path {
-        fill: $black;
-        stroke: $black;
-      }
-    }
-    & svg path {
-      transition: all 0.3s ease;
+      color: $black;
     }
   }
 }
@@ -560,6 +611,8 @@ select {
 }
 
 .faq {
+  position: relative;
+  overflow: hidden;
   color: $white;
   background-image: url(../images/faq-bg.jpg);
   &__list {
@@ -589,6 +642,15 @@ select {
       & .plus-icon__line--vertical {
         opacity: 0;
       }
+      & .faq__content {
+        overflow: visible;
+        opacity: 1;
+        transition: opacity 500ms ease, block-size 600ms ease;
+      }
+
+      & .faq__question {
+        padding-block-end: 0.9375rem;
+      }
     }
   }
   &__header {
@@ -598,9 +660,17 @@ select {
     cursor: pointer;
   }
   &__content {
-    padding-top: 0.63rem;
     max-width: 60rem;
     width: 100%;
+    overflow: hidden;
+    block-size: 0;
+    opacity: 0;
+    transition: opacity 500ms ease, block-size 600ms ease;
+  }
+  &__answer {
+    max-inline-size: 60rem;
+    transition: padding 0.3s ease 0s;
+    padding-top: 0.63rem;
   }
   &__heading {
     color: $black;
@@ -703,6 +773,12 @@ select {
 .list {
   margin: 0;
   padding-left: 1.0625rem;
+  @media screen and (max-width: $tablet) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1.25rem;
+    grid-row-gap: 1.88rem;
+  }
   &__item {
     color: #151513;
     font-size: 1.5rem;
@@ -710,12 +786,23 @@ select {
     line-height: 1.4em;
     display: flex;
     align-items: center;
+    &:nth-child(even) {
+      @media screen and (max-width: $tablet) {
+        margin-left: 1.88rem;
+      }
+    }
+    & b {
+      margin-inline: 0.4rem;
+    }
     @media screen and (max-width: $desktop) {
       font-size: 1.25rem;
     }
+    @media screen and (max-width: $tablet) {
+      display: block;
+    }
     &::before {
       content: "";
-      height: 1.5rem;
+      height: 1rem;
       width: 1.5rem;
       display: block;
       margin-left: -1.5rem;
@@ -724,6 +811,10 @@ select {
       background-repeat: no-repeat;
       background-image: url("../images/bullet.svg");
       padding: 0.15rem;
+      @media screen and (max-width: $tablet) {
+        display: inline-block;
+        margin-right: 0;
+      }
     }
   }
 }
@@ -745,15 +836,44 @@ select {
   @media screen and (max-width: $desktop) {
     max-width: 34rem;
   }
+  @media screen and (max-width: $tablet) {
+    max-width: none;
+  }
+}
+
+.parallax-container {
+  @media screen and (max-width: $large-tablet) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .decor {
+  &-man {
+    @media screen and (max-width: $large-tablet) {
+      height: 31.25rem;
+    }
+    @media screen and (max-width: $mobile) {
+      height: 15.5625rem;
+    }
+  }
   &-wrapper {
     position: absolute;
     bottom: 0;
     right: 15rem;
     @media screen and (max-width: $desktop) {
       right: 5rem;
+    }
+    @media screen and (max-width: $large-tablet) {
+      max-width: max-content;
+      margin: 3.81rem auto -6.25rem auto;
+      position: static;
+    }
+    @media screen and (max-width: $tablet) {
+      margin: 3.81rem auto -4.5rem auto;
+    }
+    @media screen and (max-width: $mobile) {
+      margin: 3.81rem auto -3.75rem auto;
     }
   }
   &-1 {
@@ -766,11 +886,27 @@ select {
       width: 3.4375rem;
       height: 3.125rem;
     }
+    @media screen and (max-width: $large-tablet) {
+      top: auto;
+      bottom: 5rem;
+    }
+    @media screen and (max-width: $mobile) {
+      height: 1.47688rem;
+      bottom: 10.5rem;
+      right: 6.3rem;
+    }
   }
   &-2 {
     position: absolute;
     right: 0;
     top: 0;
+    @media screen and (max-width: $large-tablet) {
+      top: auto;
+      bottom: 8.5rem;
+    }
+    @media screen and (max-width: $mobile) {
+      height: 10.22763rem;
+    }
   }
   &-4 {
     position: absolute;
@@ -782,6 +918,10 @@ select {
       transform: rotate(-45deg);
       width: 12.79538rem;
       height: 11.63219rem;
+    }
+    @media screen and (max-width: $mobile) {
+      left: -28%;
+      bottom: 4rem;
     }
   }
   &-3 {
@@ -795,6 +935,12 @@ select {
       width: 7.8125rem;
       height: 7rem;
     }
+    @media screen and (max-width: $mobile) {
+      width: 3.65719rem;
+      height: 3.27688rem;
+      bottom: 1rem;
+      left: 21%;
+    }
   }
 }
 
@@ -803,11 +949,16 @@ select {
   max-width: 100vw;
   &__row {
     display: flex;
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: $large-tablet) {
       flex-direction: column;
     }
     &--grey {
       background-color: #f5f5f5;
+    }
+    &--reverse {
+      @media screen and (max-width: $large-tablet) {
+        flex-direction: column-reverse;
+      }
     }
   }
   &__col {
@@ -816,7 +967,7 @@ select {
     @media screen and (max-width: $desktop) {
       padding: 7.81rem 6.25rem;
     }
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: $large-tablet) {
       padding: 3.75rem 0.62rem 2.5rem 0.62rem;
     }
   }
@@ -828,7 +979,7 @@ select {
       flex: 1 1 35%;
       width: 35%;
     }
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: $large-tablet) {
       flex: 1 1 100%;
       width: 100%;
     }
