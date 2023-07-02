@@ -87,6 +87,9 @@
   }
   & + .paragraph {
     margin-top: 1em;
+    @media screen and (max-width: $mobile) {
+      margin-top: 0.8em;
+    }
   }
 }
 
@@ -113,6 +116,10 @@
     font-size: 1.25rem;
     min-width: 17.875rem;
   }
+  @media screen and (max-width: $mobile) {
+    height: 3.375rem;
+    font-size: 1rem;
+  }
   &__text {
     display: block;
     transform: skewX(10deg);
@@ -130,12 +137,26 @@
     font-size: 1.125rem;
     height: 3.375rem;
     min-width: 14.5rem;
+    &.button--fill {
+      @media screen and (max-width: $mobile) {
+        width: auto;
+      }
+    }
+    @media screen and (max-width: $mobile) {
+      min-width: 8rem;
+      height: 2.25rem;
+      font-size: 0.625rem;
+      padding: 0.2rem;
+    }
   }
   &--fill {
     background-color: $accent;
     &:hover {
       color: $white;
       background-color: $grey;
+    }
+    @media screen and (max-width: $mobile) {
+      width: 100%;
     }
   }
   &--bordered {
@@ -175,6 +196,7 @@
     padding-top: 0;
   }
   &--grey {
+    overflow: hidden;
     position: relative;
     background-color: #f5f5f5;
   }
@@ -186,7 +208,7 @@
   width: 100%;
   margin: 0 auto;
   @media screen and (max-width: $desktop) {
-    max-width: 79.5rem;
+    max-width: 85rem;
   }
   @media screen and (max-width: $tablet) {
     padding-inline: 1rem;
@@ -196,6 +218,9 @@
   }
   &--small {
     max-width: 93.75rem;
+    @media screen and (max-width: $desktop) {
+      max-width: 85rem;
+    }
   }
   &--mobile {
     @media screen and (max-width: $mobile) {
@@ -220,14 +245,24 @@
   pointer-events: none;
   z-index: 5;
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  &__logo {
+    @media screen and (max-width: $tablet) {
+      width: 12rem;
+    }
+    @media screen and (max-width: $mobile) {
+      width: 6.5rem;
+    }
+  }
+  & .socials.header__socials {
+    @media screen and (max-width: $tablet) {
+      display: none;
+    }
+  }
   &.fixed-header {
     pointer-events: initial;
     transform: translateY(0);
     opacity: 1;
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-  }
-  @media screen and (max-width: $tablet) {
-    display: none;
   }
   &__container {
     display: flex;
@@ -244,12 +279,25 @@
   width: 34.375rem;
   height: 34.375rem;
   position: absolute;
+  @media screen and (max-width: $tablet) {
+    width: 20rem;
+    height: 20rem;
+    filter: blur(133px);
+  }
   &--left {
     left: -20%;
     bottom: -50%;
+    @media screen and (max-width: $tablet) {
+      left: -30%;
+      bottom: -25%;
+    }
   }
   &--right {
     right: -9%;
     top: -47%;
+    @media screen and (max-width: $tablet) {
+      right: -27%;
+      top: -12%;
+    }
   }
 }

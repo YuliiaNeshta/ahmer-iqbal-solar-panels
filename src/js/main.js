@@ -168,12 +168,33 @@ faqMainPageDropdowns.init();
 
 document.addEventListener("DOMContentLoaded", function () {
   const menu = document.querySelector(".header");
+  const pixelsFromTop = 700;
   let scrollPosition;
 
   function handleScroll() {
     scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    menu.classList.toggle("fixed-header", scrollPosition >= 500);
+    menu.classList.toggle("fixed-header", scrollPosition >= pixelsFromTop);
   }
 
   window.addEventListener("scroll", handleScroll);
 });
+
+const parallaxMovement = () => {
+  const body = document.querySelector("body");
+  const sensitivityFront = 200;
+  const decorItems = document.querySelectorAll("[data-item='parallax']");
+
+  body.addEventListener("mousemove", (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+
+    decorItems.forEach((decorItem) => {
+      decorItem.style.transform = `
+    translate(
+    ${x / sensitivityFront}%, 
+    ${y / sensitivityFront}%)`;
+    });
+  });
+};
+
+parallaxMovement();
