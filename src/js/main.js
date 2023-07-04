@@ -157,8 +157,6 @@ class Dropdowns {
   }
 }
 
-export default Dropdowns;
-
 const faqMainPageDropdowns = new Dropdowns({
   dropdownSelector: ".faq__item",
   contentSelector: ".faq__content",
@@ -181,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const parallaxMovement = () => {
   const body = document.querySelector("body");
-  const sensitivityFront = 200;
+  const sensitivityFront = 100;
   const decorItems = document.querySelectorAll("[data-item='parallax']");
 
   body.addEventListener("mousemove", (e) => {

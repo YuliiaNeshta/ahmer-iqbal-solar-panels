@@ -45,8 +45,9 @@
       margin-block: 2.5rem;
       width: 7.8125rem;
       height: 0.25rem;
-      border-radius: 2px;
+      border-radius: 0.125rem;
       background: rgba(21, 21, 19, 0.1);
+
       @media screen and (max-width: $tablet) {
         width: 2.5rem;
         height: 0.125rem;
@@ -119,6 +120,8 @@
   @media screen and (max-width: $mobile) {
     height: 3.375rem;
     font-size: 1rem;
+    border-radius: 0.6rem;
+    margin: 0.1rem;
   }
   &__text {
     display: block;
