@@ -53,6 +53,9 @@ class Dropdowns {
           this.toggle(i);
         });
       }
+      if (this.dropdowns.length > 0) {
+        this.open(0);
+      }
     }
 
     this.closeMultiple(

@@ -204,12 +204,12 @@ select {
   &__video {
     background-color: $black;
     width: 25.9375rem;
-    max-height: 41.75rem;
+    height: 41.75rem;
     flex-shrink: 0;
     border-radius: $border-radius;
     @media screen and (max-width: $desktop) {
       width: 19.6875rem;
-      max-height: 31.25rem;
+      height: 31.25rem;
     }
     @media screen and (max-width: $large-tablet) {
       width: 18.75rem;
