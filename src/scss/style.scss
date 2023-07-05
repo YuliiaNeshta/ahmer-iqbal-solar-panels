@@ -247,6 +247,7 @@ select {
 
 .academy {
   &__content {
+    align-items: center;
     display: flex;
     gap: 10.31rem;
     @media screen and (max-width: $desktop) {
@@ -263,9 +264,11 @@ select {
     width: 100%;
     border-radius: $border-radius;
     @media screen and (max-width: $desktop) {
+      min-height: 31.875rem;
       max-width: 31.5625rem;
     }
     @media screen and (max-width: $large-tablet) {
+      min-height: auto;
       width: 100%;
       height: 20rem;
       max-width: none;
@@ -369,6 +372,9 @@ select {
     position: absolute;
     left: 0;
     bottom: 0;
+    @media screen and (max-width: $large-tablet) {
+      height: 21.25rem;
+    }
     @media screen and (max-width: $tablet) {
       display: none;
     }
@@ -376,7 +382,7 @@ select {
   &__text {
     max-width: 35.8125rem;
     position: sticky;
-    top: 7rem;
+    top: 11rem;
     height: max-content;
     @media screen and (max-width: $desktop) {
       font-size: 1.25rem;
@@ -753,6 +759,7 @@ select {
     max-inline-size: 60rem;
     transition: padding 0.3s ease 0s;
     padding-top: 0.63rem;
+    text-align: initial;
   }
   &__heading {
     color: $black;
@@ -783,9 +790,7 @@ select {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    @media screen and (max-width: $mobile) {
-      text-align: center;
-    }
+    text-align: center;
   }
   &__paragraph {
     color: rgba(255, 255, 255, 0.75);
