@@ -951,8 +951,9 @@ select {
 
 .decor {
   &-man {
+    object-fit: contain;
     @media screen and (max-width: $desktop) {
-      height: 36rem;
+      height: 37rem;
     }
     @media screen and (max-width: 1200px) {
       height: 27rem;
