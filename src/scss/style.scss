@@ -202,6 +202,7 @@ select {
     }
   }
   &__video {
+    object-fit: cover;
     background-color: $black;
     width: 25.9375rem;
     height: 41.75rem;
