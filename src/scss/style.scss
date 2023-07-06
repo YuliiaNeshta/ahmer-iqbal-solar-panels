@@ -187,6 +187,7 @@ select {
     display: flex;
     gap: 9.3rem;
     flex: 1 1 auto;
+    align-items: center;
     @media screen and (max-width: $desktop) {
       gap: 7rem;
     }
